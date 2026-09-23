@@ -3,235 +3,699 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>HC Pilates | Health Center</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --beige: #eee8df;
+      --cream: #f8f5ef;
+      --olive: #879080;
+      --dark: #45463f;
+      --brown: #756c61;
+      --white: #ffffff;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f1eb;
-      color: #4d4a45;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR */
+
     header {
-      background: #ddd5ca;
-      padding: 25px 8%;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(248, 245, 239, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(69, 70, 63, 0.08);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      height: 82px;
+      padding: 0 30px;
+
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
-      font-size: 26px;
-      font-weight: bold;
-      color: #555047;
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-top: -5px;
     }
 
     nav a {
-      margin-left: 25px;
       text-decoration: none;
-      color: #555047;
-      font-weight: 500;
+      color: var(--dark);
+      margin-left: 28px;
+      font-size: 14px;
     }
+
+    nav a:hover {
+      color: var(--olive);
+    }
+
+    /* HERO */
 
     .hero {
-      min-height: 500px;
+      min-height: 100vh;
+      padding: 140px 7% 80px;
+
       display: flex;
       align-items: center;
-      padding: 70px 8%;
-      background: #eee8df;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(238,232,223,0.98) 0%,
+          rgba(238,232,223,0.88) 45%,
+          rgba(238,232,223,0.25) 100%
+        ),
+        url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1800&q=85');
+
+      background-size: cover;
+      background-position: center;
     }
 
-    .hero-text {
-      max-width: 600px;
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .small-title {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      color: var(--olive);
+      margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: 52px;
-      margin-bottom: 20px;
-      color: #514d47;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(55px, 8vw, 100px);
+      font-weight: 500;
+      line-height: 0.95;
+      margin-bottom: 12px;
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      font-weight: 500;
+      color: var(--brown);
+      margin-bottom: 25px;
     }
 
     .hero p {
-      font-size: 19px;
-      line-height: 1.6;
-      margin-bottom: 30px;
+      max-width: 500px;
+      font-size: 17px;
+      color: #5e5b55;
+      margin-bottom: 32px;
     }
 
     .button {
       display: inline-block;
-      padding: 14px 25px;
-      background: #8d998b;
+      padding: 14px 27px;
+      border-radius: 50px;
+      background: var(--olive);
       color: white;
-      border-radius: 30px;
       text-decoration: none;
+      font-size: 14px;
+      transition: 0.25s;
     }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    /* GENERAL SECTIONS */
 
     section {
-      padding: 70px 8%;
+      padding: 100px 7%;
     }
 
-    section h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 34px;
+    .section-container {
+      max-width: 1100px;
+      margin: auto;
     }
 
-    .cards {
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--olive);
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 45px;
+      font-weight: 500;
+      margin-bottom: 45px;
+    }
+
+    /* HORARIOS */
+
+    .schedule {
+      background: var(--white);
+    }
+
+    .schedule-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .schedule-card {
+      padding: 30px;
+      border: 1px solid #e5e0d8;
+      border-radius: 18px;
+      background: #fcfbf8;
+    }
+
+    .schedule-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .time {
+      display: flex;
+      justify-content: space-between;
+      padding: 11px 0;
+      border-bottom: 1px solid #ebe7e0;
+      font-size: 14px;
+    }
+
+    .available {
+      color: var(--olive);
+      font-size: 12px;
+    }
+
+    /* ANUNCIOS */
+
+    .announcements {
+      background: var(--beige);
+    }
+
+    .announcement-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 25px;
     }
 
-    .card {
+    .announcement {
+      background: var(--white);
+      padding: 32px;
+      border-radius: 20px;
+    }
+
+    .announcement h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    /* PROFESORES */
+
+    .teachers {
+      background: var(--cream);
+    }
+
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .teacher {
       background: white;
-      padding: 30px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      border-radius: 20px;
+      overflow: hidden;
     }
 
-    .card h3 {
-      margin-bottom: 15px;
+    .teacher-image {
+      height: 300px;
+      background:
+        linear-gradient(
+          rgba(135,144,128,0.12),
+          rgba(135,144,128,0.12)
+        ),
+        url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=900&q=80');
+
+      background-size: cover;
+      background-position: center;
     }
 
-    .horarios {
-      background: #e4ded5;
+    .teacher:nth-child(2) .teacher-image {
+      background-image:
+        linear-gradient(
+          rgba(135,144,128,0.12),
+          rgba(135,144,128,0.12)
+        ),
+        url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80');
     }
 
-    .profesor {
-      text-align: left;
+    .teacher-info {
+      padding: 27px;
     }
+
+    .teacher-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .teacher-role {
+      color: var(--olive);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    /* CONTACTO */
+
+    .contact {
+      background: var(--dark);
+      color: white;
+    }
+
+    .contact .section-label {
+      color: #b8c1b1;
+    }
+
+    .contact .section-title {
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-info p {
+      margin-bottom: 12px;
+      color: #d6d4ce;
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 26px;
+      background: #a2ad9b;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
 
     footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 25px;
       text-align: center;
-      padding: 30px;
-      background: #d5cec4;
+      color: #aaa9a4;
+      font-size: 12px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 90vh;
+        padding: 130px 8% 70px;
+      }
+
+      .hero h1 {
+        font-size: 65px;
+      }
+
+      .schedule-grid,
+      .announcement-grid,
+      .teacher-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 7%;
+      }
+
+      .section-title {
+        font-size: 38px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">HC Pilates</div>
+<header>
+  <div class="nav">
+
+    <div class="logo">
+      HC Pilates
+      <span>Health Center</span>
+    </div>
 
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#horarios">Horarios</a>
+      <a href="#anuncios">Anuncios</a>
       <a href="#profesores">Profesores</a>
       <a href="#contacto">Contacto</a>
     </nav>
-  </header>
 
-  <main>
+  </div>
+</header>
 
-    <section class="hero" id="inicio">
-      <div class="hero-text">
-        <h1>HC Pilates</h1>
-        <h2>Health Center</h2>
 
-        <p>
-          Un espacio pensado para conectar cuerpo y mente
-          a través del Pilates, en un ambiente tranquilo,
-          cálido y personalizado.
-        </p>
+<main>
 
-        <a class="button" href="#horarios">Ver horarios</a>
+  <!-- PORTADA -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+      <div class="small-title">
+        Pilates · Movimiento · Bienestar
       </div>
-    </section>
 
-    <section id="horarios">
-      <h2>Horarios y disponibilidad</h2>
+      <h1>HC Pilates</h1>
 
-      <div class="cards">
+      <h2>Health Center</h2>
 
-        <div class="card">
+      <p>
+        Un espacio para conectar con tu cuerpo,
+        mejorar tu movimiento y encontrar un momento
+        de bienestar en tu día.
+      </p>
+
+      <a class="button" href="#horarios">
+        Ver horarios
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- HORARIOS -->
+
+  <section class="schedule" id="horarios">
+
+    <div class="section-container">
+
+      <div class="section-label">
+        Reservas
+      </div>
+
+      <h2 class="section-title">
+        Horarios y disponibilidad
+      </h2>
+
+      <div class="schedule-grid">
+
+        <div class="schedule-card">
+
           <h3>Lunes</h3>
-          <p>09:00 · 10:00 · 18:00 · 19:00</p>
+
+          <div class="time">
+            <span>09:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>10:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>18:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>19:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
         </div>
 
-        <div class="card">
+
+        <div class="schedule-card">
+
           <h3>Miércoles</h3>
-          <p>09:00 · 10:00 · 18:00 · 19:00</p>
+
+          <div class="time">
+            <span>09:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>10:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>18:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>19:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
         </div>
 
-        <div class="card">
+
+        <div class="schedule-card">
+
           <h3>Viernes</h3>
-          <p>09:00 · 10:00 · 17:00 · 18:00</p>
+
+          <div class="time">
+            <span>09:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>10:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>17:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
+          <div class="time">
+            <span>18:00</span>
+            <span class="available">Disponible</span>
+          </div>
+
         </div>
 
       </div>
-    </section>
 
-    <section class="horarios">
-      <h2>Noticias y anuncios</h2>
+    </div>
 
-      <div class="cards">
-        <div class="card">
+  </section>
+
+
+  <!-- ANUNCIOS -->
+
+  <section class="announcements" id="anuncios">
+
+    <div class="section-container">
+
+      <div class="section-label">
+        Novedades
+      </div>
+
+      <h2 class="section-title">
+        Anuncios
+      </h2>
+
+      <div class="announcement-grid">
+
+        <div class="announcement">
+
           <h3>Nuevos horarios</h3>
+
           <p>
-            Consultá las nuevas clases disponibles
-            y reservá tu lugar.
+            Ya se encuentran disponibles nuevos turnos
+            para nuestras clases de Pilates.
           </p>
+
         </div>
 
-        <div class="card">
+
+        <div class="announcement">
+
           <h3>Clase especial</h3>
+
           <p>
-            Próximamente anunciaremos nuevas
-            actividades para nuestros alumnos.
+            Próximamente anunciaremos nuevas actividades
+            y propuestas para nuestros alumnos.
           </p>
-        </div>
-      </div>
-    </section>
 
-    <section id="profesores">
-      <h2>Nuestros profesores</h2>
-
-      <div class="cards">
-
-        <div class="card profesor">
-          <h3>Profesora 1</h3>
-          <p>
-            Instructora de Pilates enfocada en el
-            bienestar, la movilidad y el trabajo corporal.
-          </p>
-        </div>
-
-        <div class="card profesor">
-          <h3>Profesor 2</h3>
-          <p>
-            Especialista en entrenamiento personalizado
-            y acompañamiento de alumnos.
-          </p>
         </div>
 
       </div>
-    </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
+    </div>
 
-      <div class="card">
-        <p>📍 Dirección del estudio</p>
-        <br>
-        <p>📱 WhatsApp: 11 0000-0000</p>
-        <br>
-        <p>📷 Instagram: @pilatesstudio</p>
+  </section>
+
+
+  <!-- PROFESORES -->
+
+  <section class="teachers" id="profesores">
+
+    <div class="section-container">
+
+      <div class="section-label">
+        Nuestro equipo
       </div>
-    </section>
 
-  </main>
+      <h2 class="section-title">
+        Profesores
+      </h2>
 
-  <footer>
-    <p>© 2026 Pilates Studio · Todos los derechos reservados.</p>
-  </footer>
+      <div class="teacher-grid">
+
+        <div class="teacher">
+
+          <div class="teacher-image"></div>
+
+          <div class="teacher-info">
+
+            <h3>Profesora 1</h3>
+
+            <div class="teacher-role">
+              Instructora de Pilates
+            </div>
+
+            <p>
+              Descripción de la profesora, experiencia,
+              formación y especialidades.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="teacher">
+
+          <div class="teacher-image"></div>
+
+          <div class="teacher-info">
+
+            <h3>Profesor 2</h3>
+
+            <div class="teacher-role">
+              Instructor de Pilates
+            </div>
+
+            <p>
+              Descripción del profesor, experiencia,
+              formación y especialidades.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACTO -->
+
+  <section class="contact" id="contacto">
+
+    <div class="section-container">
+
+      <div class="section-label">
+        Estamos para ayudarte
+      </div>
+
+      <h2 class="section-title">
+        Contacto
+      </h2>
+
+      <div class="contact-grid">
+
+        <div class="contact-info">
+
+          <p>📍 Dirección del estudio</p>
+
+          <p>📱 WhatsApp: 11 0000-0000</p>
+
+          <p>📷 Instagram: @hcpilates</p>
+
+          <a class="contact-button" href="#">
+            Consultar por WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  HC Pilates · Health Center · 2026
+
+</footer>
 
 </body>
 </html>
