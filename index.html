@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilates Studio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f1eb;
+      color: #4d4a45;
+    }
+
+    header {
+      background: #ddd5ca;
+      padding: 25px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #555047;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #555047;
+      font-weight: 500;
+    }
+
+    .hero {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      padding: 70px 8%;
+      background: #eee8df;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 20px;
+      color: #514d47;
+    }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 25px;
+      background: #8d998b;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 34px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+    }
+
+    .horarios {
+      background: #e4ded5;
+    }
+
+    .profesor {
+      text-align: left;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #d5cec4;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Pilates Studio</div>
+
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#horarios">Horarios</a>
+      <a href="#profesores">Profesores</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="hero-text">
+        <h1>Movete. Respirá. Sentite mejor.</h1>
+
+        <p>
+          Un espacio pensado para conectar cuerpo y mente
+          a través del Pilates, en un ambiente tranquilo,
+          cálido y personalizado.
+        </p>
+
+        <a class="button" href="#horarios">Ver horarios</a>
+      </div>
+    </section>
+
+    <section id="horarios">
+      <h2>Horarios y disponibilidad</h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>Lunes</h3>
+          <p>09:00 · 10:00 · 18:00 · 19:00</p>
+        </div>
+
+        <div class="card">
+          <h3>Miércoles</h3>
+          <p>09:00 · 10:00 · 18:00 · 19:00</p>
+        </div>
+
+        <div class="card">
+          <h3>Viernes</h3>
+          <p>09:00 · 10:00 · 17:00 · 18:00</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="horarios">
+      <h2>Noticias y anuncios</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Nuevos horarios</h3>
+          <p>
+            Consultá las nuevas clases disponibles
+            y reservá tu lugar.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Clase especial</h3>
+          <p>
+            Próximamente anunciaremos nuevas
+            actividades para nuestros alumnos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="profesores">
+      <h2>Nuestros profesores</h2>
+
+      <div class="cards">
+
+        <div class="card profesor">
+          <h3>Profesora 1</h3>
+          <p>
+            Instructora de Pilates enfocada en el
+            bienestar, la movilidad y el trabajo corporal.
+          </p>
+        </div>
+
+        <div class="card profesor">
+          <h3>Profesor 2</h3>
+          <p>
+            Especialista en entrenamiento personalizado
+            y acompañamiento de alumnos.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+
+      <div class="card">
+        <p>📍 Dirección del estudio</p>
+        <br>
+        <p>📱 WhatsApp: 11 0000-0000</p>
+        <br>
+        <p>📷 Instagram: @pilatesstudio</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Pilates Studio · Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
