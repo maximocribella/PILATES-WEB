@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>HC Pilates | Health Center</title>
-
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap');
 
     * {
       margin: 0;
@@ -22,6 +20,7 @@
       --dark: #45463f;
       --brown: #756c61;
       --white: #ffffff;
+      --gold: #d4af37;
     }
 
     body {
@@ -36,13 +35,12 @@
     }
 
     /* NAVBAR */
-
     header {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(248, 245, 239, 0.94);
+      background: rgba(248, 245, 239, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(69, 70, 63, 0.08);
     }
@@ -52,7 +50,6 @@
       margin: auto;
       height: 82px;
       padding: 0 30px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -62,6 +59,8 @@
       font-family: 'Playfair Display', serif;
       font-size: 27px;
       letter-spacing: 1px;
+      text-decoration: none;
+      color: var(--dark);
     }
 
     .logo span {
@@ -79,6 +78,7 @@
       color: var(--dark);
       margin-left: 28px;
       font-size: 14px;
+      transition: color 0.2s;
     }
 
     nav a:hover {
@@ -86,25 +86,23 @@
     }
 
     /* HERO */
-
     .hero {
       min-height: 100vh;
       padding: 140px 7% 80px;
-
       display: flex;
       align-items: center;
-
+      position: relative;
       background:
         linear-gradient(
           90deg,
           rgba(238,232,223,0.98) 0%,
           rgba(238,232,223,0.88) 45%,
-          rgba(238,232,223,0.25) 100%
+          rgba(238,232,223,0.3) 100%
         ),
         url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1800&q=85');
-
       background-size: cover;
       background-position: center;
+      transition: background-image 0.3s ease;
     }
 
     .hero-content {
@@ -117,13 +115,14 @@
       font-size: 12px;
       color: var(--olive);
       margin-bottom: 18px;
+      font-weight: 600;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(55px, 8vw, 100px);
+      font-size: clamp(48px, 7vw, 90px);
       font-weight: 500;
-      line-height: 0.95;
+      line-height: 0.98;
       margin-bottom: 12px;
     }
 
@@ -142,26 +141,71 @@
       margin-bottom: 32px;
     }
 
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
     .button {
       display: inline-block;
-      padding: 14px 27px;
+      padding: 14px 28px;
       border-radius: 50px;
       background: var(--olive);
       color: white;
       text-decoration: none;
       font-size: 14px;
-      transition: 0.25s;
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
     }
 
     .button:hover {
       transform: translateY(-2px);
-      opacity: 0.9;
+      box-shadow: 0 4px 12px rgba(135,144,128,0.3);
+    }
+
+    .button-outline {
+      background: transparent;
+      border: 1px solid var(--dark);
+      color: var(--dark);
+    }
+
+    .button-outline:hover {
+      background: var(--dark);
+      color: white;
+    }
+
+    /* PILARES */
+    .pillars {
+      display: flex;
+      gap: 30px;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(117,108,97,0.2);
+    }
+
+    .pillar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .pillar-item strong {
+      display: block;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .pillar-item span {
+      color: var(--brown);
     }
 
     /* GENERAL SECTIONS */
-
     section {
-      padding: 100px 7%;
+      padding: 90px 7%;
     }
 
     .section-container {
@@ -175,17 +219,153 @@
       color: var(--olive);
       font-size: 11px;
       margin-bottom: 10px;
+      font-weight: 600;
     }
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 45px;
+      font-size: 42px;
       font-weight: 500;
-      margin-bottom: 45px;
+      margin-bottom: 40px;
+    }
+
+    /* ARANCELES & PACKS */
+    .aranceles {
+      background: var(--beige);
+    }
+
+    .packs-wrapper {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .packs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pack-card {
+      background: var(--white);
+      padding: 22px 28px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .pack-card:hover {
+      border-color: var(--olive);
+      transform: translateX(6px);
+      box-shadow: 0 4px 15px rgba(135,144,128,0.15);
+    }
+
+    .pack-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .pack-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--olive);
+      font-size: 18px;
+    }
+
+    .pack-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .pack-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--brown);
+    }
+
+    .pack-cta {
+      font-size: 12px;
+      color: var(--olive);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 10px;
+    }
+
+    /* CAJA SENTIMENTAL */
+    .emotional-box {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 20px;
+      border-left: 4px solid var(--olive);
+    }
+
+    .emotional-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+
+    .emotional-box p {
+      color: #66635c;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* AVISOS IMPORTANTES */
+    .avisos {
+      background: var(--cream);
+    }
+
+    .avisos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .aviso-card {
+      background: var(--white);
+      padding: 28px;
+      border-radius: 18px;
+      border: 1px solid #ebe6dd;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .aviso-badge {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--cream);
+      color: var(--olive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 18px;
+    }
+
+    .aviso-card p {
+      font-size: 15px;
+      color: var(--dark);
+      font-weight: 500;
     }
 
     /* HORARIOS */
-
     .schedule {
       background: var(--white);
     }
@@ -197,7 +377,7 @@
     }
 
     .schedule-card {
-      padding: 30px;
+      padding: 26px;
       border: 1px solid #e5e0d8;
       border-radius: 18px;
       background: #fcfbf8;
@@ -205,51 +385,44 @@
 
     .schedule-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 25px;
-      margin-bottom: 20px;
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--brown);
     }
 
-    .time {
-      display: flex;
-      justify-content: space-between;
-      padding: 11px 0;
-      border-bottom: 1px solid #ebe7e0;
-      font-size: 14px;
-    }
-
-    .available {
-      color: var(--olive);
+    .schedule-card .date-badge {
       font-size: 12px;
-    }
-
-    /* ANUNCIOS */
-
-    .announcements {
-      background: var(--beige);
-    }
-
-    .announcement-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
-    }
-
-    .announcement {
-      background: var(--white);
-      padding: 32px;
-      border-radius: 20px;
-    }
-
-    .announcement h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--olive);
       margin-bottom: 12px;
+      display: block;
+    }
+
+    .time-slot {
+      background: var(--cream);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 8px;
+      display: inline-block;
+      margin-right: 5px;
+      color: var(--dark);
+    }
+
+    .schedule-note {
+      margin-top: 35px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--brown);
+      background: var(--cream);
+      padding: 16px;
+      border-radius: 50px;
     }
 
     /* PROFESORES */
-
     .teachers {
-      background: var(--cream);
+      background: var(--beige);
     }
 
     .teacher-grid {
@@ -262,17 +435,17 @@
       background: white;
       border-radius: 20px;
       overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
 
     .teacher-image {
-      height: 300px;
+      height: 320px;
       background:
         linear-gradient(
-          rgba(135,144,128,0.12),
-          rgba(135,144,128,0.12)
+          rgba(135,144,128,0.1),
+          rgba(135,144,128,0.1)
         ),
         url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=900&q=80');
-
       background-size: cover;
       background-position: center;
     }
@@ -280,30 +453,32 @@
     .teacher:nth-child(2) .teacher-image {
       background-image:
         linear-gradient(
-          rgba(135,144,128,0.12),
-          rgba(135,144,128,0.12)
+          rgba(135,144,128,0.1),
+          rgba(135,144,128,0.1)
         ),
         url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80');
     }
 
     .teacher-info {
-      padding: 27px;
+      padding: 28px;
     }
 
     .teacher-info h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 27px;
-      margin-bottom: 8px;
+      font-size: 26px;
+      margin-bottom: 6px;
     }
 
     .teacher-role {
       color: var(--olive);
       font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       margin-bottom: 14px;
+      font-weight: 600;
     }
 
     /* CONTACTO */
-
     .contact {
       background: var(--dark);
       color: white;
@@ -320,382 +495,567 @@
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 50px;
     }
 
-    .contact-info p {
-      margin-bottom: 12px;
-      color: #d6d4ce;
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 24px;
     }
 
-    .contact-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 26px;
-      background: #a2ad9b;
-      color: white;
-      border-radius: 50px;
+    .contact-item-icon {
+      font-size: 20px;
+      color: #b8c1b1;
+      margin-top: 3px;
+    }
+
+    .contact-item div h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #b8c1b1;
+      margin-bottom: 4px;
+    }
+
+    .contact-item div p, .contact-item div a {
+      color: #e5e2db;
       text-decoration: none;
+      font-size: 16px;
+    }
+
+    .contact-item div a:hover {
+      text-decoration: underline;
     }
 
     /* FOOTER */
-
     footer {
-      background: var(--dark);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 25px;
+      background: #383933;
+      padding: 30px 7%;
       text-align: center;
-      color: #aaa9a4;
-      font-size: 12px;
+      color: #a3a199;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* MOBILE */
+    /* MODAL RESERVAS */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-    @media (max-width: 800px) {
+    .modal-overlay.active {
+      display: flex;
+    }
 
-      nav {
-        display: none;
-      }
+    .modal-card {
+      background: var(--cream);
+      width: 100%;
+      max-width: 500px;
+      border-radius: 24px;
+      padding: 35px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
 
-      .hero {
-        min-height: 90vh;
-        padding: 130px 8% 70px;
-      }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--brown);
+    }
 
-      .hero h1 {
-        font-size: 65px;
-      }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
 
-      .schedule-grid,
-      .announcement-grid,
-      .teacher-grid,
-      .contact-grid {
+    .modal-subtitle {
+      font-size: 14px;
+      color: var(--olive);
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      color: var(--brown);
+      font-weight: 600;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid #dcd6cb;
+      background: white;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--dark);
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--olive);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* BOTÓN WHATSAPP FLOTANTE */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+      z-index: 1500;
+      text-decoration: none;
+      transition: transform 0.25s;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 850px) {
+      nav { display: none; }
+      .hero { padding-top: 130px; }
+      .packs-wrapper, .teacher-grid, .contact-grid, .schedule-grid, .avisos-grid {
         grid-template-columns: 1fr;
       }
-
-      section {
-        padding: 75px 7%;
-      }
-
-      .section-title {
-        font-size: 38px;
-      }
+      .pillars { flex-direction: column; gap: 15px; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
 
 <header>
   <div class="nav">
-
-    <div class="logo">
+    <a href="#inicio" class="logo">
       HC Pilates
       <span>Health Center</span>
-    </div>
-
+    </a>
     <nav>
       <a href="#inicio">Inicio</a>
+      <a href="#aranceles">Aranceles</a>
+      <a href="#avisos">Avisos</a>
       <a href="#horarios">Horarios</a>
-      <a href="#anuncios">Anuncios</a>
       <a href="#profesores">Profesores</a>
       <a href="#contacto">Contacto</a>
     </nav>
-
   </div>
 </header>
 
-
 <main>
 
-  <!-- PORTADA -->
-
+  <!-- HERO -->
   <section class="hero" id="inicio">
-
     <div class="hero-content">
-
-      <div class="small-title">
-        Pilates · Movimiento · Bienestar
+      <div class="small-title">Pilates · Movimiento · Bienestar</div>
+      <h1>Tu momento,<br>tu bienestar.</h1>
+      <h2>HC Pilates Health Center</h2>
+      <p>
+        Un espacio para conectar con tu cuerpo, fortalecer tu mente y sentirte mejor cada día.
+      </p>
+      <div class="hero-buttons">
+        <a class="button" href="#aranceles">Ver Aranceles</a>
+        <a class="button button-outline" href="https://wa.me/5491123063516" target="_blank">Escribinos</a>
       </div>
 
-      <h1>HC Pilates</h1>
-
-      <h2>Health Center</h2>
-
-      <p>
-        Un espacio para conectar con tu cuerpo,
-        mejorar tu movimiento y encontrar un momento
-        de bienestar en tu día.
-      </p>
-
-      <a class="button" href="#horarios">
-        Ver horarios
-      </a>
-
+      <div class="pillars">
+        <div class="pillar-item">
+          <div>
+            <strong>Cuerpo</strong>
+            <span>Más fuerte</span>
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div>
+            <strong>Mente</strong>
+            <span>Más tranquila</span>
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div>
+            <strong>Energía</strong>
+            <span>Más vital</span>
+          </div>
+        </div>
+      </div>
     </div>
-
   </section>
 
+  <!-- ARANCELES -->
+  <section class="aranceles" id="aranceles">
+    <div class="section-container">
+      <div class="section-label">Planes y Valores</div>
+      <h2 class="section-title">Aranceles</h2>
+
+      <div class="packs-wrapper">
+        <div class="packs-list">
+          <div class="pack-card" onclick="openBooking('Pack 4 Clases', '$45.000')">
+            <div class="pack-info">
+              <div class="pack-icon">🌿</div>
+              <div>
+                <div class="pack-title">Pack 4 Clases</div>
+                <div class="pack-cta">Haz clic para reservar</div>
+              </div>
+            </div>
+            <div class="pack-price">$45.000</div>
+          </div>
+
+          <div class="pack-card" onclick="openBooking('Pack 6 Clases', '$50.000')">
+            <div class="pack-info">
+              <div class="pack-icon">🌿</div>
+              <div>
+                <div class="pack-title">Pack 6 Clases</div>
+                <div class="pack-cta">Haz clic para reservar</div>
+              </div>
+            </div>
+            <div class="pack-price">$50.000</div>
+          </div>
+
+          <div class="pack-card" onclick="openBooking('Pack 8 Clases', '$55.000')">
+            <div class="pack-info">
+              <div class="pack-icon">🌿</div>
+              <div>
+                <div class="pack-title">Pack 8 Clases</div>
+                <div class="pack-cta">Haz clic para reservar</div>
+              </div>
+            </div>
+            <div class="pack-price">$55.000</div>
+          </div>
+
+          <div class="pack-card" onclick="openBooking('Pack 10 Clases', '$70.000')">
+            <div class="pack-info">
+              <div class="pack-icon">🌿</div>
+              <div>
+                <div class="pack-title">Pack 10 Clases</div>
+                <div class="pack-cta">Haz clic para reservar</div>
+              </div>
+            </div>
+            <div class="pack-price">$70.000</div>
+          </div>
+
+          <div class="pack-card" onclick="openBooking('Pack 12 Clases', '$75.000')">
+            <div class="pack-info">
+              <div class="pack-icon">🌿</div>
+              <div>
+                <div class="pack-title">Pack 12 Clases</div>
+                <div class="pack-cta">Haz clic para reservar</div>
+              </div>
+            </div>
+            <div class="pack-price">$75.000</div>
+          </div>
+        </div>
+
+        <div class="emotional-box">
+          <h3>Sobre nosotros</h3>
+          <p>
+            Somos un estudio integral que ofrece equipamientos originales del método, reeducación postural y acondicionamiento físico.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVISOS IMPORTANTES -->
+  <section class="avisos" id="avisos">
+    <div class="section-container">
+      <div class="section-label">Información Útil</div>
+      <h2 class="section-title">Avisos Importantes</h2>
+
+      <div class="avisos-grid">
+        <div class="aviso-card">
+          <div class="aviso-badge">🗓️</div>
+          <p>Los abonos se realizan del 1 al 10 de cada mes.</p>
+        </div>
+
+        <div class="aviso-card">
+          <div class="aviso-badge">⚠️</div>
+          <p>Pasada la fecha se abona un recargo del 15%.</p>
+        </div>
+
+        <div class="aviso-card">
+          <div class="aviso-badge">💳</div>
+          <p>La seña del pack de clases tiene un valor de $20.000.-</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- HORARIOS -->
-
   <section class="schedule" id="horarios">
-
     <div class="section-container">
-
-      <div class="section-label">
-        Reservas
-      </div>
-
-      <h2 class="section-title">
-        Horarios y disponibilidad
-      </h2>
+      <div class="section-label">Disponibilidad</div>
+      <h2 class="section-title">Horarios Disponibles</h2>
 
       <div class="schedule-grid">
-
         <div class="schedule-card">
-
-          <h3>Lunes</h3>
-
-          <div class="time">
-            <span>09:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>10:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>18:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>19:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-        </div>
-
-
-        <div class="schedule-card">
-
-          <h3>Miércoles</h3>
-
-          <div class="time">
-            <span>09:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>10:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>18:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>19:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-        </div>
-
-
-        <div class="schedule-card">
-
+          <span class="date-badge">Viernes 21</span>
           <h3>Viernes</h3>
-
-          <div class="time">
-            <span>09:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>10:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>17:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
-          <div class="time">
-            <span>18:00</span>
-            <span class="available">Disponible</span>
-          </div>
-
+          <span class="time-slot">09:30 hs</span>
+          <span class="time-slot">10:30 hs</span>
+          <span class="time-slot">18:00 hs</span>
         </div>
 
+        <div class="schedule-card">
+          <span class="date-badge">Sábado 22</span>
+          <h3>Sábado</h3>
+          <span class="time-slot">10:00 hs</span>
+        </div>
+
+        <div class="schedule-card">
+          <span class="date-badge">Lunes 24</span>
+          <h3>Lunes</h3>
+          <span class="time-slot">09:30 hs</span>
+          <span class="time-slot">10:30 hs</span>
+          <span class="time-slot">16:00 hs</span>
+          <span class="time-slot">17:00 hs</span>
+        </div>
+
+        <div class="schedule-card">
+          <span class="date-badge">Martes 25</span>
+          <h3>Martes</h3>
+          <span class="time-slot">09:30 hs</span>
+          <span class="time-slot">10:30 hs</span>
+        </div>
+
+        <div class="schedule-card">
+          <span class="date-badge">Miércoles 26</span>
+          <h3>Miércoles</h3>
+          <span class="time-slot">09:30 hs</span>
+          <span class="time-slot">19:00 hs</span>
+        </div>
+
+        <div class="schedule-card">
+          <span class="date-badge">Jueves 27</span>
+          <h3>Jueves</h3>
+          <span class="time-slot">19:00 hs</span>
+        </div>
       </div>
 
+      <div class="schedule-note">
+        💬 Reserva tu horario para recuperar tu clase a través de nuestro WhatsApp.
+      </div>
     </div>
-
   </section>
-
-
-  <!-- ANUNCIOS -->
-
-  <section class="announcements" id="anuncios">
-
-    <div class="section-container">
-
-      <div class="section-label">
-        Novedades
-      </div>
-
-      <h2 class="section-title">
-        Anuncios
-      </h2>
-
-      <div class="announcement-grid">
-
-        <div class="announcement">
-
-          <h3>Nuevos horarios</h3>
-
-          <p>
-            Ya se encuentran disponibles nuevos turnos
-            para nuestras clases de Pilates.
-          </p>
-
-        </div>
-
-
-        <div class="announcement">
-
-          <h3>Clase especial</h3>
-
-          <p>
-            Próximamente anunciaremos nuevas actividades
-            y propuestas para nuestros alumnos.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
 
   <!-- PROFESORES -->
-
   <section class="teachers" id="profesores">
-
     <div class="section-container">
-
-      <div class="section-label">
-        Nuestro equipo
-      </div>
-
-      <h2 class="section-title">
-        Profesores
-      </h2>
+      <div class="section-label">Nuestro Equipo</div>
+      <h2 class="section-title">Instructoras</h2>
 
       <div class="teacher-grid">
-
         <div class="teacher">
-
           <div class="teacher-image"></div>
-
           <div class="teacher-info">
-
-            <h3>Profesora 1</h3>
-
-            <div class="teacher-role">
-              Instructora de Pilates
-            </div>
-
-            <p>
-              Descripción de la profesora, experiencia,
-              formación y especialidades.
-            </p>
-
+            <h3>Instructora</h3>
+            <div class="teacher-role">Instructora de Pilates</div>
+            <p>Especialista en el método pilates, reeducación postural y acompañamiento personalizado.</p>
           </div>
-
         </div>
 
-
         <div class="teacher">
-
           <div class="teacher-image"></div>
-
           <div class="teacher-info">
-
-            <h3>Profesor 2</h3>
-
-            <div class="teacher-role">
-              Instructor de Pilates
-            </div>
-
-            <p>
-              Descripción del profesor, experiencia,
-              formación y especialidades.
-            </p>
-
+            <h3>Instructora</h3>
+            <div class="teacher-role">Instructora de Pilates</div>
+            <p>Especialista en acondicionamiento físico, fuerza consciente y bienestar integral.</p>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
 
-
   <!-- CONTACTO -->
-
   <section class="contact" id="contacto">
-
     <div class="section-container">
-
-      <div class="section-label">
-        Estamos para ayudarte
-      </div>
-
-      <h2 class="section-title">
-        Contacto
-      </h2>
+      <div class="section-label">Contacto</div>
+      <h2 class="section-title">Encuéntranos</h2>
 
       <div class="contact-grid">
+        <div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <h4>Dirección</h4>
+              <p>Av. Don Bosco 5612, B1754 Villa Luzuriaga<br>Provincia de Buenos Aires, Argentina</p>
+            </div>
+          </div>
 
-        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📱</div>
+            <div>
+              <h4>Teléfono / WhatsApp</h4>
+              <p><a href="https://wa.me/5491123063516" target="_blank">11 2306-3516</a></p>
+            </div>
+          </div>
 
-          <p>📍 Dirección del estudio</p>
-
-          <p>📱 WhatsApp: 11 0000-0000</p>
-
-          <p>📷 Instagram: @hcpilates</p>
-
-          <a class="contact-button" href="#">
-            Consultar por WhatsApp
-          </a>
-
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:studiopilateshealthcenter@gmail.com">studiopilateshealthcenter@gmail.com</a></p>
+            </div>
+          </div>
         </div>
 
+        <div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📷</div>
+            <div>
+              <h4>Instagram</h4>
+              <p><a href="https://instagram.com/pilateshealthcenter" target="_blank">@pilateshealthcenter</a></p>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5491123063516" target="_blank" class="button" style="margin-top:20px;">Contactar por WhatsApp</a>
+        </div>
       </div>
-
     </div>
-
   </section>
 
 </main>
 
-
 <footer>
-
-  HC Pilates · Health Center · 2026
-
+  HC Pilates · Health Center · Av. Don Bosco 5612, Villa Luzuriaga
 </footer>
+
+<!-- MODAL DE COMPRA -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeBooking()">✕</button>
+    <div class="modal-title" id="modalPackTitle">Inscripción a Pack</div>
+    <div class="modal-subtitle" id="modalPackPrice">Valor del pack</div>
+
+    <form id="bookingForm" onsubmit="submitBooking(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" id="nombre" required placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Apellido</label>
+          <input type="text" id="apellido" required placeholder="Tu apellido">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Fecha de Nacimiento</label>
+          <input type="date" id="fechaNacimiento" required>
+        </div>
+        <div class="form-group">
+          <label>Número de Teléfono</label>
+          <input type="tel" id="telefono" required placeholder="Ej: 1123456789">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Forma de Pago</label>
+        <select id="metodoPago" required>
+          <option value="Efectivo">Efectivo</option>
+          <option value="Transferencia">Transferencia</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Comentario / Descripción (Opcional)</label>
+        <textarea id="descripcion" rows="2" placeholder="¿Deseas indicarnos alguna observación o preferencia horaria?"></textarea>
+      </div>
+
+      <button type="submit" class="button" style="width:100%; margin-top:10px;">Confirmar y Enviar por WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<a href="https://wa.me/5491123063516" target="_blank" class="whatsapp-float" title="Contactar por WhatsApp">
+  💬
+</a>
+
+<script>
+  let selectedPackName = '';
+  let selectedPackPrice = '';
+
+  function openBooking(packName, packPrice) {
+    selectedPackName = packName;
+    selectedPackPrice = packPrice;
+    document.getElementById('modalPackTitle').innerText = packName;
+    document.getElementById('modalPackPrice').innerText = 'Valor: ' + packPrice;
+    document.getElementById('bookingModal').classList.add('active');
+  }
+
+  function closeBooking() {
+    document.getElementById('bookingModal').classList.remove('active');
+  }
+
+  function submitBooking(event) {
+    event.preventDefault();
+    
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+    const telefono = document.getElementById('telefono').value.trim();
+    const metodoPago = document.getElementById('metodoPago').value;
+    const descripcion = document.getElementById('descripcion').value.trim();
+
+    let mensaje = `Hola! quisiera comprar el ${selectedPackName} (${selectedPackPrice}).\n\n`;
+    mensaje += `*Mis Datos:*\n`;
+    mensaje += `- Nombre y Apellido: ${nombre} ${apellido}\n`;
+    mensaje += `- Fecha de Nacimiento: ${fechaNacimiento}\n`;
+    mensaje += `- Teléfono: ${telefono}\n`;
+    mensaje += `- Voy a abonar con: ${metodoPago}\n`;
+    if(descripcion) {
+      mensaje += `- Observaciones: ${descripcion}\n`;
+    }
+
+    const whatsappUrl = `https://wa.me/5491123063516?text=${encodeURIComponent(mensaje)}`;
+    window.open(whatsappUrl, '_blank');
+    closeBooking();
+  }
+</script>
 
 </body>
 </html>
