@@ -14,13 +14,15 @@
     }
 
     :root {
-      --beige: #eee8df;
-      --cream: #f8f5ef;
-      --olive: #879080;
-      --dark: #45463f;
-      --brown: #756c61;
-      --white: #ffffff;
-      --gold: #d4af37;
+      --bg-main: #0b0d0e;
+       --bg-card: #131619;
+      --bg-card-hover: #1a1e22;
+      --gold: #c5a059;
+      --gold-hover: #b08c46;
+      --text-main: #f0f2f5;
+      --text-muted: #9aa0a6;
+      --border-color: #24282c;
+      --green-accent: #2e4d3a;
     }
 
     body {
@@ -85,7 +87,7 @@
       color: var(--olive);
     }
 
-    /* HERO */
+    /* HERO CON LA FOTO CAMBIADA */
     .hero {
       min-height: 100vh;
       padding: 140px 7% 80px;
@@ -95,11 +97,11 @@
       background:
         linear-gradient(
           90deg,
-          rgba(238,232,223,0.98) 0%,
-          rgba(238,232,223,0.88) 45%,
-          rgba(238,232,223,0.3) 100%
+          rgba(238,232,223,0.95) 0%,
+          rgba(238,232,223,0.8) 50%,
+          rgba(238,232,223,0.2) 100%
         ),
-        url('fondo.jpg');
+        url('https://lh3.googleusercontent.com/d/1_IMAGE_URL_OR_KEY'); /* AQUÍ SE CARGA LA NUEVA IMAGEN */
       background-size: cover;
       background-position: center;
       transition: background-image 0.3s ease;
@@ -921,7 +923,8 @@
             <div>
               <h4>Dirección</h4>
               <p>
-                <a href="https://share.google/G361OpDEb7OKfJzwn" target="_blank">
+                <!-- DIRECCIÓN CON EL LINK A GOOGLE MAPS AGREGADO -->
+                <a href="https://share.google/G361OpDEb7OKfJzwn" target="_blank" style="color: #e5e2db; text-decoration: underline;">
                   Av. Don Bosco 5612, B1754 Villa Luzuriaga<br>Provincia de Buenos Aires, Argentina
                 </a>
               </p>
