@@ -92,7 +92,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 38%;
   align-items: center;
-  gap: 60px;
+  gap: 40px;
   position: relative;
 
   background:
@@ -112,22 +112,21 @@
       max-width: 620px;
     }
 .hero-image {
-  width: 38%;
-  max-width: 430px;
+  width: 100%;
+  max-width: 600px;
   margin-left: 50px;
   flex-shrink: 0;
 }
 
 .hero-image img {
   width: 100%;
-  height: auto; /* Cambiado de 420px a auto para mantener la proporción original */
-  max-height: 500px; /* Opcional: limita la altura máxima para que no sea gigante */
+  height: 560px;
+  max-height: 560px;
   object-fit: cover;
   border-radius: 28px;
   display: block;
   box-shadow: 0 20px 50px rgba(0,0,0,0.35);
 
-  /* Máscara de transparencia suave (de opaco a transparente) */
   -webkit-mask-image: linear-gradient(
     to left,
     black 70%,
