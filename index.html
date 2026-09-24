@@ -87,29 +87,29 @@
 
     /* HERO CON LA FOTO CAMBIADA */
     .hero {
-      min-height: 100vh;
-      padding: 140px 7% 80px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(3,7,9,0.95) 0%,
-          rgba(3,7,9,0.80) 50%,
-          rgba(3,7,9,0.20) 100%
-        ),
-      background-size: cover;
-      background-position: center;
-      transition: background-image 0.3s ease;
-    }
+  min-height: 100vh;
+  padding: 140px 7% 80px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 38%;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3,7,9,0.95) 0%,
+      rgba(3,7,9,0.80) 50%,
+      rgba(3,7,9,0.20) 100%
+    );
+
+  background-size: cover;
+  background-position: center;
+}
     
     .hero-content {
-      widht: 55%;
+      width: 100%;
       max-width: 620px;
-      flex-shrink: 0;
     }
 .hero-image {
   width: 38%;
@@ -673,6 +673,14 @@
 
     /* RESPONSIVE */
     @media (max-width: 850px) {
+      .hero {
+  grid-template-columns: 1fr;
+  padding-top: 130px;
+}
+
+.hero-content {
+  width: 100%;
+}
       .hero-image {
   width: 100%;
   max-width: 500px;
