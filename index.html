@@ -107,6 +107,8 @@
       display: flex;
       align-items: center;
       position: relative;
+      flex-wrap: nowrap;
+      justify-content: space-between;
       background:
         linear-gradient(
           90deg,
@@ -120,8 +122,9 @@
     }
     
     .hero-content {
+      widht: 55%;
       max-width: 620px;
-      flex: 1;
+      flex-shrink: 0;
     }
 .hero-image {
   width: 38%;
